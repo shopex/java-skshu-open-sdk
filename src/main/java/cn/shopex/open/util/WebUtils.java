@@ -10,7 +10,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import cn.shopex.open.ShopexOpenClient;
+import org.apache.log4j.Logger;
+
 public abstract class WebUtils {
+
+    private static Logger logger = Logger.getLogger(WebUtils.class);
 
     public static final String DEFAULT_CHARSET = "UTF-8";
 
@@ -46,9 +51,9 @@ public abstract class WebUtils {
             throws IOException {
         String ctype = "application/x-www-form-urlencoded;charset=" + charset;
         String query = buildQuery(params, charset);
-        System.out.println(url);
-        System.out.println(headers);
-        System.out.println(params);
+        logger.debug(url);
+        logger.debug(headers);
+        logger.debug(params);
         byte[] content = {};
         if (query != null) {
             content = query.getBytes(charset);

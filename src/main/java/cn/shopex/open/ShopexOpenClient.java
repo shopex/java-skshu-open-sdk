@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
  * <p>ShopexOpenClient 客户端</p>
  */
 public class ShopexOpenClient {
+
     private static Logger logger = Logger.getLogger(ShopexOpenClient.class);
 
     private Map<String, String> commonSysParams;//api请求系统级参数
@@ -85,7 +86,7 @@ public class ShopexOpenClient {
      */
     private Map<String, String> getHeaders() {
         Map<String, String> headers = new HashMap<String, String>();
-        headers.put("User-Agent", "TeegonSDK/JAVA");
+        headers.put("User-Agent", "SkShuOpenSDK/Java");
         return headers;
     }
 
@@ -138,7 +139,7 @@ public class ShopexOpenClient {
         String mixAllParams = secret + Constant.SEPARATOR + allParams.get("timestamp") + Constant.SEPARATOR + allParams.get("jsondata") + Constant.SEPARATOR + secret;
 
         logger.debug("sing_str is " + mixAllParams);
-        //加密签名
+
         try {
             return SignTools.byte2hex(SignTools.encryptMD5(mixAllParams), true);
         } catch (IOException e) {
